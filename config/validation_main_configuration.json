@@ -9,14 +9,14 @@
             "token_dir" : "./credentials/token/sheet_token.json"
         },
         "boto3" : {
-            "aws_access_key_id" : "AKIAIBIIRBWN4EQUHDKA",
-            "aws_secret_access_key" : "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",
-            "bucket" : "shopback-validation"    
+            "aws_access_key_id" : "*****",
+            "aws_secret_access_key" : "*****",
+            "bucket" : "Bucket-name"    
         }
     },
     "configuration" : {
         "const" : {
-            "sheetId" : "1-g_TMnF37hwYILtJS2S-cuJwy58DH4lVyxYorjjUFUE", 
+            "sheetId" : "****", 
             "sheetName" : "Log",
             "updateRange" : "processed_log",
             "getValueFields" : { 
@@ -59,7 +59,7 @@
         "process_iteration" : [
             {
                 "type" : "send",
-                "from_user" : "anjali@shopback.com",
+                "from_user" : "example@example.com",
                 "to_user" : null,
                 "store_dir" : null,
                 "filename_regex" : ".*(validation|shopback).*\\.(xls|xls|csv)"
@@ -67,14 +67,14 @@
             {
                 "type" : "reply",
                 "from_user" : null,
-                "to_user" : "marshall@shopback.com",
+                "to_user" : "example@example.com",
                 "store_dir" : "./temp/",
                 "filename_regex" : null
             },
             {
                 "type" : "validate",
                 "store_dir" : "./temp/",
-                "cc" : ["anjali@shopback.com, sam.moss@shopback.com, finance@shopback.com, celine.kuo@shopback.com"],
+                "cc" : ["example@example.com, example@example.com, example@example.com, example@example.com"],
                 "mail_body" : "OK to proceed with invoice amount %s NTD.\n @Finance I've attached working file here, \n\n thanks,"
             }
         ]

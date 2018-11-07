@@ -33,7 +33,7 @@ MAIL_SCOPES = [
     'https://www.googleapis.com/auth/gmail.readonly',
     'https://mail.google.com/'
 ]
-PROCESS_OWNER = 'marshall@shopback.com'
+PROCESS_OWNER = 'example@gmail.com'
 
 class gsheetHandler :
 

@@ -1,0 +1,82 @@
+{
+    "credentials" : {
+        "gmail" : {
+            "client_secret" : "./credentials/secret/client_secret_gmail.json",
+            "token_dir" : "./credentials/token/mail_token.json"
+        },
+        "gsheet" : {
+            "client_secret" : "./credentials/secret/client_secret_sheet.json",
+            "token_dir" : "./credentials/token/sheet_token.json"
+        },
+        "boto3" : {
+            "aws_access_key_id" : "AKIAIBIIRBWN4EQUHDKA",
+            "aws_secret_access_key" : "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",
+            "bucket" : "shopback-validation"    
+        }
+    },
+    "configuration" : {
+        "const" : {
+            "sheetId" : "1-g_TMnF37hwYILtJS2S-cuJwy58DH4lVyxYorjjUFUE", 
+            "sheetName" : "Log",
+            "updateRange" : "processed_log",
+            "getValueFields" : { 
+                "name" : "Merchant Name (English)",
+                "email" : "Email",
+                "offerId" : "OfferId",
+                "data_level" : "Data_Level",
+                "sub_used" : "Sub_Used",
+                "filename_regex" : "Filename_regex",
+                "processed_flag" : "latest_processed_date",
+                "thresholdId" : "attach_id",
+                "result_confirm" : "result_confirm",
+                "filename" : "filename_s3"
+            },
+            "updateValueFields" : {
+                "processed_log" : "processed_log",
+                "threshold" : "result_confirm",
+                "thresholdId" : "attach_id",
+                "filename" : "filename_s3"
+            },
+            "updateProperties" : [
+                {
+                    "updateDimensionProperties": {
+                        "range": {
+                            "sheetId":  390510875,
+                            "dimension": "COLUMNS",
+                            "startIndex": 1,
+                            "endIndex": 6
+                        },
+                        "properties": {
+                            "hiddenByUser": true
+                        },
+                        "fields": "hiddenByUser"
+                    }
+                }
+            ]
+        },
+        "dimension" : "ROW",
+        "addfrom" : "latest_processed_date",
+        "process_iteration" : [
+            {
+                "type" : "send",
+                "from_user" : "anjali@shopback.com",
+                "to_user" : null,
+                "store_dir" : null,
+                "filename_regex" : ".*(validation|shopback).*\\.(xls|xls|csv)"
+            },
+            {
+                "type" : "reply",
+                "from_user" : null,
+                "to_user" : "marshall@shopback.com",
+                "store_dir" : "./temp/",
+                "filename_regex" : null
+            },
+            {
+                "type" : "validate",
+                "store_dir" : "./temp/",
+                "cc" : ["anjali@shopback.com, sam.moss@shopback.com, finance@shopback.com, celine.kuo@shopback.com"],
+                "mail_body" : "OK to proceed with invoice amount %s NTD.\n @Finance I've attached working file here, \n\n thanks,"
+            }
+        ]
+    }
+}  
